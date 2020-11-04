@@ -9,6 +9,9 @@ export default function Board() {
     const turn_me = 'Me';
     const turn_you = 'You';
 
+    const [meScore, setMeScore] = useState(0);
+    const [youScore, setYouScore] = useState(0);
+
     const [mark_1, setMark_1] = useState('*');
     const [mark_2, setMark_2] = useState('*');
     const [mark_3, setMark_3] = useState('*');
@@ -186,7 +189,7 @@ export default function Board() {
             (mark_2 == mark_me && mark_5 == mark_me && mark_8 == mark_me) ||
             (mark_2 == mark_you && mark_5 == mark_you && mark_8 == mark_you) ||
             (mark_1 == mark_me && mark_4 == mark_me && mark_7 == mark_me) ||
-            (mark_1 == mark_you && mark_4 == mark_you && mark_7 == mark_you) ||
+            (mark_1 == mark_you && mark_4 == mark_you && mark_7 == mark_you) || 
             (mark_4 == mark_me && mark_5 == mark_me && mark_6 == mark_me) ||
             (mark_4 == mark_you && mark_5 == mark_you && mark_6 == mark_you) ||
             (mark_7 == mark_me && mark_8 == mark_me && mark_9 == mark_me) ||
@@ -195,14 +198,25 @@ export default function Board() {
             (mark_3 == mark_you && mark_5 == mark_you && mark_7 == mark_you) ||
             (mark_3 == mark_me && mark_6 == mark_me && mark_9 == mark_me) ||
             (mark_3 == mark_you && mark_6 == mark_you && mark_9 == mark_you)){        
-            alert(turn + ' won!')
+            alert(turn + ' won!');
         }
-    })
+        if(turn == turn_me){
+            
+        }
+    }, [])
 
     return(
             <View>
                 <Text>This is a Test Tic Tac Toe Game:</Text>
                 <Text>Turn: {turn}</Text>
+                <View>
+                    <Text>
+                        Me: {meScore}
+                    </Text>
+                    <Text>
+                        You: {youScore}
+                    </Text>
+                </View>
                 <View style = {styles.container}>
                     <View style={styles.boardCol}>
                         <TouchableOpacity
@@ -309,3 +323,4 @@ const styles = StyleSheet.create({
   // 1. score
   // 2. review the layout
   // 3. Alert: correct the name of the winner
+  // 4. Disable board after winner has been declared
